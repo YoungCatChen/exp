@@ -1,16 +1,17 @@
-name: GHA1 - Simple Test Workflow
-
 on:
   push:
     branches: [master, main]
+    paths-ignore:
+      - "**.md"
   pull_request:
     branches: "**"
+    paths-ignore:
+      - "**.md"
   workflow_dispatch:
 
 jobs:
   success-job:
     runs-on: ubuntu-latest
-    name: Always Success Job
     steps:
       - name: Success step
         run: |
@@ -19,7 +20,6 @@ jobs:
 
   failure-job:
     runs-on: ubuntu-latest
-    name: Always Failure Job
     steps:
       - name: Failure step
         run: |
